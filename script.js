@@ -15,8 +15,8 @@ $("#citySearchButton").click(function () {
         method: "GET"
     }).then(function (response) {
         $("#currentWeather").text(response.name);
-        $("#currentDate").text(moment().format("(L)"));
-        // $("#currentIcon").
+        $("#currentDate").html(moment().format("(L)"));
+        $("#currentIcon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
         let tempF = Math.round((response.main.temp - 273.15) * 1.80 + 32);
         $("#currentTemp").text("Temperature: " + tempF + "°F");
         $("#currentHumid").text("Humidity: " + response.main.humidity + "%");
