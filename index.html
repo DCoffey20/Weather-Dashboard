@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Title</title>
+  <title>Weather</title>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -23,13 +23,14 @@
     <div class="col-3 bg-light">
       <h3 class="col-12 text-center">CITY SEARCH</h3>
       <form class="form-inline">
-        <button id="citySearchButton" type="submit" class="fas fa-search ml-3" aria-hidden="true"></button>
+        <button id="citySearchButton" type="submit" class="fas fa-search ml-3 btn" aria-hidden="true"></button>
         <input id="citySearch" class="form-control form-control-sm ml-3 w-95" type="text" placeholder="Enter City Name"
           aria-label="Search" />
       </form>
-      <ul id="cityList" class="btn">
 
-      </ul>
+      <div class="card mt-2 mb-3 text-center">
+          <ul class="list-group list-group-item-info" id="cityList"></ul>
+      </div>
     </div>
 
     <div class="container-fluid col-9">
@@ -41,7 +42,8 @@
             Wind Speed
             UV index (if free) -->
         <div class="pl-5">
-          <p class="text-center"><span id="currentWeather" class="h1"></span> <span id="currentDate" class="h3"></span></p>
+          <p class="text-center"><span id="currentWeather" class="h1"></span> <span id="currentDate" class="h3"></span>
+          </p>
           <p><img id="currentIcon"></p>
           <p id="currentTemp"></p>
           <p id="currentHumid"></p>
