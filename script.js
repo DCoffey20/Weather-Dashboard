@@ -2,7 +2,8 @@ $(document).ready(function () {
     let apiKey = "0b4ce2adf9660ea726ae320d56010a24";
     let city;
     let cityHistory = [];
-    
+    $("#myModal").hide();
+
 
     // console.log(city);
 
@@ -40,18 +41,23 @@ $(document).ready(function () {
         } else if ($("li").attr("id") === city) {
             // console.log($("#cityList li").length);
             return
-        } else {
+        } else if (!cityHistory.includes(city)) {
             list.text(city);
             list.addClass("list-group-item btn");
             list.attr("id", city);
             $("#cityList").prepend(list);
             // console.log("3");
+            cityHistory.push(city);
         };
 
         $.ajax({
             url: weather,
-            method: "GET"
+            method: "GET",
+            beforeSend: function () {
+                $("#myModal").show()
+            }
         }).then(function (response) {
+            $("#myModal").hide();
             $("#currentWeather").text(response.name);
             $("#currentDate").html(moment().format("(L)"));
             $("#currentIcon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
@@ -66,8 +72,12 @@ $(document).ready(function () {
 
         $.ajax({
             url: forecast,
-            method: "GET"
+            method: "GET",
+            beforeSend: function () {
+                $("#myModal").show()
+            }
         }).then(function (response) {
+            $("#myModal").hide();
             // Day 1
             $("#day1").text(moment().add(1, "d").format("(L)"));
             $("#day1Icon").attr("src", "http://openweathermap.org/img/w/" + response.list[5].weather[0].icon + ".png");
@@ -100,7 +110,7 @@ $(document).ready(function () {
             $("#day5Humid").text("Humidity: " + response.list[37].main.humidity + "%");
             // console.log(response);
 
-            cityHistory.push(city);
+
 
             localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
             console.log(cityHistory);
