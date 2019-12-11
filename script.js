@@ -33,7 +33,7 @@ $(document).ready(function () {
         city = $("#citySearch").val();
         list = $("<li>");
 
-        let weather = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + apiKey;
+        let weather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + apiKey;
         // console.log("test");
         if (city == "") {
             // console.log("1")
@@ -68,7 +68,7 @@ $(document).ready(function () {
             // console.log(response);
         });
 
-        let forecast = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=" + apiKey;
+        let forecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=" + apiKey;
 
         $.ajax({
             url: forecast,
@@ -123,7 +123,7 @@ $(document).ready(function () {
         city = this.id;
         // console.log(this.id);
 
-        let weather = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + apiKey;
+        let weather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + apiKey;
         $.ajax({
             url: weather,
             method: "GET"
@@ -138,7 +138,7 @@ $(document).ready(function () {
             // console.log(response);
         });
 
-        let forecast = "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=" + apiKey;
+        let forecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=" + apiKey;
 
         $.ajax({
             url: forecast,
